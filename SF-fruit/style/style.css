@@ -1,0 +1,104 @@
+﻿@charset "UTF-8";
+
+@import"font.css";
+
+.wrap {position: relative; z-index: 1; background: #f5f5f5; }
+.contain {padding: 3rem 0 4rem 0; }
+/*搜索框*/
+.searchBox {margin: 0 auto; background: #ffc408; padding: 0.5rem 3%;  height: 2rem; position: fixed; z-index: 100; width: 94%; overflow: hidden;}
+.searchBox .logoBox { width: 4rem; margin-right: 4%; }
+.searchBox .logoBox img {display: block;}
+.searchBox .searchHref {background: #fff; }
+.searchHref a {display: block; width: 100%; height: 100%; text-align: center;}
+.searchHref em {font-size: 1.6rem;}
+.searchHref span {text-align: center; display: inline-block; height: 2rem; line-height: 2rem; vertical-align: middle; }
+
+.searchArea { }
+.searchArea em { display: block; text-align: center; background: #fff; color:#888888;}
+.searchArea input[type=text] {display: block; padding: 0 4px;  height: 2rem;  line-height: 2rem; }
+.searchArea span {display: block; line-height: 2rem; height: 2rem; width: 35px; padding-left:12px; color: #fff; text-align: center; font-size: 1.6rem; }
+
+/*头部导航*/
+.headerNav { width: 100%; margin-bottom: 1px; background: #fff; box-sizing: border-box;}
+.headerNav li {text-align: center; line-height: 2.5rem; text-align: center;}
+.headerNav li a {display: block; width: 100%; }
+.headerNav li.active a {color: #ffc408; border-bottom: 2px solid #ffc408}
+
+/*底部导航*/
+.footer {position: fixed; z-index: 100; bottom: 0; width: 100%; height: 4rem; background: #ffffff;}
+.footer li {text-align: center; line-height: 4rem; position: relative;}
+.footer li a {display: block; height: 100%;}
+.footer li em {font-size: 2.6rem; color: #000; margin-right: 1rem; position: relative; }
+.footer li span {text-align: center; display: inline-block; height: 2rem; line-height: 2rem; vertical-align: middle; font-size: 1.8rem;}
+.footer li i {position: absolute; display: block;}
+.splitline {height: 2rem; width: 1px; background: #f3f3f3; right: -1px; top: 50%; margin-top: -1rem; }
+.userNum {right: -12px; top: -10px; height: 1.8rem; width: 1.8rem; background: #f00; border-radius: 50%; color: #fff; font-size: 1.4rem; line-height: 2rem; white-space:nowrap;text-overflow:ellipsis; overflow: hidden; text-align: center; font-weight: bold; font-family: 'SimHei'; }
+
+/* 搜索记录 */
+.IndexSearch { padding:3rem 0 4rem; }
+.IndexSearch h2 {line-height: 5rem; border-bottom: 1px solid #f4f4f4; height: 4rem; font-weight: 100; font-size: 1.8rem}
+
+/* 热门 */
+.HotSearch {background: #fff; padding:0 1rem;}
+.hotList {padding: 0.8rem 0 1.6rem; min-height: 10.5rem; }
+.hotList li {width: 30%; float: left; text-align: center; margin: 0.4rem; line-height: 2.5rem; overflow: hidden; }
+.hotList li span {display: block; height: 100%; width: 80%; margin: 0 auto; box-sizing: border-box;  border: 1px solid #f5f5f5; white-space:nowrap;text-overflow:ellipsis; overflow: hidden;}
+.hotList li span.active {border: 1px solid #d1e3b6}
+
+/* 历史记录 */
+.HistorySearch {background: #fff; padding:0 1rem 1rem 1rem; margin-top: 1rem; min-height: 36rem;}
+.historyList li {width: 100%; color: #9f9f9f; line-height: 4.5rem; height: 3.5rem; box-sizing: border-box; border-bottom: 1px solid #f5f5f5; }
+
+.HClearBtn { position: fixed; left: 0; bottom:0; padding-bottom: 0.8rem; width: 100%; background: #fff;}
+.HClearBtn button {border-radius: 6px; border: 1px solid #000; background: #fff; color: #000; line-height: 3rem; font-size: 1.8rem; font-weight: 100; display: block; margin: 0 auto; width: 94%;}
+
+/* 产品显示 */
+.goodsShow {}
+.goodsTitle {}
+.goodsTitle h3 {font-weight: 100; text-align: center; line-height: 3rem; }
+.goodsTitle h3 em {width: 2.5rem; height: 1px; background: #fda837; display: inline-block;  vertical-align: middle;}
+.goodsTitle h3 span {color: #fda837; margin: 0 1rem;  font-size: 1.8rem; vertical-align: middle;}
+
+/* 活动图片 */
+/* adImgBox  ipad  需要调试 图片变型 */
+.goodsTitle .adImgBox {width: 100%; height: 12.2rem; position: relative; border-top: 1px solid #f5f5f5; border-bottom: 1px solid #f5f5f5;}
+.adImgBox a{display: block; height: 100%;}
+.adImgBox img {width: 100%; height: 100%; display: block;}
+.adImgBox i {display: block; background: url(../image/tip_djjx.png); height: 5rem; width: 5rem; bottom: 0; right: 0; position: absolute; background-size: 100% 100%;}
+
+/* 产品列表 */
+.goodsList {background: #fff}
+.picList {box-sizing: border-box; float: left; width: 50%; padding:1px; overflow: hidden; position: relative; border-right: 1px solid #f5f5f5; border-bottom: 1px solid #f5f5f5;  }
+.picList:nth-child(2n) {border-right:0;}
+.picList a {height: 100%; display: block;}
+.picList figure {max-height: 20rem; max-width: 20rem; box-sizing: border-box; padding: 2.4rem 0 1.5rem; margin: 0 auto; overflow: hidden;}
+.picList img {display: block; width: 100%; height: 100%;   }
+.picList .priceArea {padding:1rem 1.6rem; font-size: 1.6rem}
+.priceArea h4 {font-size: 1.9rem; color: #000; line-height: 36px; font-weight: 100; white-space:nowrap;text-overflow:ellipsis; overflow: hidden;}
+.priceArea p {color: #fb7171; font-size: 2rem;}
+.priceArea p span {display: inline-block;}
+.priceArea p i {font-size: 1.4rem; vertical-align: top; float: left;}
+.priceArea p span {float: left; margin-left: 4px;}
+.priceArea .goodsWeight {color: #b0b0b0; font-size: 1.4rem; line-height: 22px; }
+
+/* 快捷加入购物车 */
+.addCar {position: absolute; z-index: 20; bottom: 1.4rem; right: 0; font-size: 2.4rem; margin-top: -0.6rem; color: #000; font-weight: bold;   height:2.5rem; width: 6rem; text-align: center; line-height: 3rem; }
+.addCar em {position: relative; font-weight: 600;}
+.addCar em i {position: absolute; right: -8px; top: -4px; height: 1.2rem; width: 1.2rem; background: #ffa320; border-radius: 50%; color: #fff; font-size: 2rem; text-align: center; line-height: 13px; font-weight: 100;}
+
+
+
+
+/* 轮播图 */
+/* silderBox  ipad 需要调试 图片变型 */
+.silderBox {width: 100%; height: 14.7rem; margin-top: -1px;}
+.silderBox img {display: block; width: 100%; height: 100%}
+
+/* 公共样式 */
+.icoStyle {height: 2rem; width: 2rem;  display: inline-block; vertical-align: middle;  line-height: 2rem}
+.moveIcon {height: 12px; width: 12px; background: #f00; position: fixed; top: 95%; left: 74%;  z-index: 10; border-radius: 50%; color: #fff; line-height: 12px; text-align: center; font-weight: bold;}
+.moveIcon.MAnimate {
+    -webkit-transition:0.5s left linear,0.5s top ease-in,0.1s 0.5s visibility linear ;
+    -o-transition: 0.5s left linear,0.5s top ease-in,0.1s 0.5s visibility linear;
+    transition: 0.5s left linear,0.5s top ease-in,0.1s 0.5s visibility linear;
+}
