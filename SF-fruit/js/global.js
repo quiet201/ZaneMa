@@ -26,6 +26,10 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
         var oPage1 = $('.js_page1');                //详情滚动1
         var oPage2 = $('.js_page2');                //详情滚动2
 
+        var oRecommendList = $('.js_recommendList');//推荐列表
+        var oRecomUL = oRecommendList.find('ul');   //推荐列表ul
+        var oRecomLi = oRecommendList.find('li');   //推荐列表li
+
 
 /**********************************  添加滚动条 start   *************************************/
         //页面滚动
@@ -35,67 +39,96 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
             conScroll.ScrollIng(function() {
                 this.y + 450 < 0 ? oGoTop.show() : oGoTop.hide();
             });
+            // 阻止其他元素拖动
+            $(document).on('touchmove',function(e) { e.preventDefault();});
+
         }
         //二级导航滚动
         if(oNavSecList.length>0) {
-            oNavSecUl.css({width:oNavSecLi.width() * oNavSecLi.length});
+            oNavSecUl.css({width:oNavSecLi.outerWidth(true) * oNavSecLi.length});
             var secScroll = new myPub.ScrollBar();
             secScroll.AddScroll(oNavSecList[0],{scrollX: true, scrollY: false, click:true,mouseWheel:true});
         }
         //详情滚动
         if(oPage1.length>0 && oPage2.length>0) {
-            var maxY = 100;
+            var maxY = 40;
             var oPullTip = $('.js_pullTip');
-            var H1 = oPage1.height();
-            var H2 = oPage2.height();
-            var pageScroll1 = new IScroll(oPage1[0], { probeType: 3, mouseWheel: true, click:true });
-            var pageScroll2 = new IScroll(oPage2[0], { probeType: 3, mouseWheel: true, click:true });
 
-            pageScroll1.on('scroll',function() {
-                var _disY = this.maxScrollY - this.y;
-                if(_disY >= maxY) {
-                    oPage1.find('.js_pullTip').addClass('changIcon');
-                }
-                else {
-                    oPullTip.removeClass('changIcon');
-                }
-            });
+            // oPage1.css({top:0,height:H1});
+            // oPage2.css({top:H1,height:H2});
+            var pageScroll1 = new IScroll(oPage1[0], { probeType: 3, mouseWheel: true, click:true,preventDefault:false});
+            var pageScroll2 = new IScroll(oPage2[0], { probeType: 3, mouseWheel: true, click:true,});
+            var H1 = pageScroll1.scrollerHeight;
+            // var H2 = pageScroll2.scrollerHeight;
+            // oPage1.css({top:0});
+            oPage2.css({top:735});
 
-            pageScroll2.on('scroll',function() {
-                if(this.y >= maxY) {
-                    oPage2.find('.js_pullTip').addClass('changIcon');
-                }
-                else {
-                    oPullTip.removeClass('changIcon');
-                }
-            });
+            // 阻止其他元素拖动
+            $(document).on('touchmove',function(e) { e.preventDefault();});
+
+            // pageScroll1.on('scroll',function() {
+            //     var _disY = this.maxScrollY - this.y;
+            //     if(_disY >= maxY) {
+            //         oPage1.find('.js_pullTip').addClass('changIcon');
+            //     }
+            //     else {
+            //         oPullTip.removeClass('changIcon');
+            //     }
+            // });
+
+            // pageScroll2.on('scroll',function() {
+            //     if(this.y >= maxY) {
+            //         oPage2.find('.js_pullTip').addClass('changIcon');
+            //     }
+            //     else {
+            //         oPullTip.removeClass('changIcon');
+            //     }
+            // });
 
 
-            //上拉
+            // //上拉
             pageScroll1.on('slideUp',function() {
                 //console.log("1:"+this.y);
                 if(this.maxScrollY - this.y > maxY) {
-                    oPage1.stop().animate({height:0,opacity:0},300);
-                    oPage2.stop().animate({height:H2,opacity:1},500,function() {
-                        pageScroll2.refresh();
+                    pageScroll1.destroy();
+
+                    oPage1.stop().animate({'top':-H1},250,function() {
+
                     });
+
+
+
+                    // oPage2.stop().animate({'z-index':3,'top':0},250,function() {
+                    //     pageScroll2.refresh();
+                    // });
+
+
+                    //oPage1.css({'top':-H1},250);
+
 
                 }
             });
-            //下拉
-            pageScroll2.on('slideDown',function() {
-                //console.log('2:'+this.y);
-                if(this.y > maxY) {
-                    oPullTip.removeClass('changIcon');
-                    oPage2.find('.js_pullTip').addClass('changIcon');
-                    oPage1.stop().animate({height:H1,opacity:1},500,function() {
-                        pageScroll1.refresh();
-                    });
-                    oPage2.stop().animate({height:0,opacity:0},300);
+            // //下拉
+            // pageScroll2.on('slideDown',function() {
+            //     //console.log('2:'+this.y);
+            //     if(this.y > maxY) {
+            //         oPullTip.removeClass('changIcon');
+            //         oPage2.find('.js_pullTip').addClass('changIcon');
+            //         oPage1.stop().animate({'z-index':3,'top':0},250,function() {
+            //             pageScroll1.refresh();
+            //         });
+            //         oPage2.stop().animate({'z-index':2,'top':H1},250);
 
-                }
-            });
+            //     }
+            // });
 
+        }
+
+        //推荐滚动
+        if(oRecommendList.length>0) {
+            oRecomUL.css({width:oRecomLi.outerWidth(true) * oRecomLi.length});
+            var recomScroll = new myPub.ScrollBar();
+            recomScroll.AddScroll(oRecommendList[0],{scrollX: true, scrollY: false, click:true,mouseWheel:true});
         }
 
         oGoTop.hammer().on('tap',function(e) {

@@ -23,7 +23,7 @@ define(function(require,exports,module) {
     }
     exports.HamstopPropaga = HamstopPropaga;
 
-    /*滚动条效果*/
+    /*************** 滚动条效果 s***************/
     function ScrollBar(obj) {
         this.obj = obj;
     }
@@ -35,7 +35,6 @@ define(function(require,exports,module) {
     //刷新滚动条
     ScrollBar.prototype.ReScroll = function () {
         this.obj.refresh();
-        //console.log(this.obj)
     };
 
     //删除滚动条
@@ -55,12 +54,6 @@ define(function(require,exports,module) {
     ScrollBar.prototype.ScrollEnd = function (fn) {
         var _this = this.obj;
         _this.on('scrollEnd', fn);
-        //console.log(_this)
-        //console.log(_this.maxScrollY)
-        //如果滑动到底部，则加载更多数据
-        // if ((this.y - this.maxScrollY) < 20) {
-        //     fn(_this);
-        // }
     };
 
      //滚动监听
@@ -80,7 +73,10 @@ define(function(require,exports,module) {
     // };
 
     exports.ScrollBar = ScrollBar;
+    /*************** 滚动条效果 e***************/
 
+     /*************** 弹框效果 s***************/
+     /*************** 弹框效果 e***************/
 
 });
 
