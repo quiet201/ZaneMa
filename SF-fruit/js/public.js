@@ -16,12 +16,33 @@ define(function(require,exports,module) {
         });
     }
     exports.AddCarAnimate = AddCarAnimate;
+
     // hammer 冒泡
     function HamstopPropaga() {
         window.event.returnValue = false;
         return false;
     }
     exports.HamstopPropaga = HamstopPropaga;
+
+    //平滑事件
+    function onHammerSwiper(obj) {
+        this.obj = obj;
+    }
+
+    onHammerSwiper.prototype.addHamSwipe = function(obj,type,fn) {
+        this.obj = new Hammer.Manager(obj);
+        this.obj.add(new Hammer.Swipe({threshold:8,direction:Hammer.DIRECTION_ALL}));
+        this.obj.on(type,function(e) {
+            if(fn) fn(e);
+            //e.preventDefault();
+            //e.stopPropagation();
+        });
+    };
+
+    exports.onHammerSwiper = onHammerSwiper;
+
+
+
 
     /*************** 滚动条效果 s***************/
     function ScrollBar(obj) {
@@ -76,7 +97,19 @@ define(function(require,exports,module) {
     /*************** 滚动条效果 e***************/
 
      /*************** 弹框效果 s***************/
-     /*************** 弹框效果 e***************/
+     /*************** 弹框效果 e***************//* 数字验证 */
+    function ValiNum(obj,fn1,fn2) {
+        var reg = new RegExp("^[0-9]*$");
+        if(!reg.test(obj.val())){
+            if(fn1) fn1();
+        }
+        else if( obj.val() < 0) {
+            alert("数量不能小余1");
+            obj.val(1);
+        }
+        else{if(fn2) fn2();}
+    }
+    exports.ValiNum = ValiNum;
 
 });
 
