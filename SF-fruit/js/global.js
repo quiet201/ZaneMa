@@ -391,7 +391,12 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
         });
 
         //添加购物车动画
-        myPub.AddCarAnimate(oBtnAddCar,oMoveIcon);
+        if(oFooter.find('li').length<=2) {
+            myPub.AddCarAnimate(oBtnAddCar,oMoveIcon,"74%","95%");
+        }
+        else {
+            myPub.AddCarAnimate(oBtnAddCar,oMoveIcon,"30%","94%");
+        }
 
 
 

@@ -1,7 +1,7 @@
 define(function(require,exports,module) {
 
     //加入购物车的动画
-    function AddCarAnimate(obj,target) {
+    function AddCarAnimate(obj,target,sLeft,sTop) {
         obj.hammer().on('tap',function(e) {
             // console.log(e.target.innerHTML);
             target.removeClass('MAnimate');
@@ -10,7 +10,7 @@ define(function(require,exports,module) {
             target.css({ 'left':_X,'top':_Y, 'opacity':1});
             clearTimeout(obj.time);
             obj.time = setTimeout(function() {
-                target.addClass('MAnimate').css({'left':"74%",'top':"95%", 'opacity':0});
+                target.addClass('MAnimate').css({'left':sLeft,'top':sTop, 'opacity':0});
             },10);
             HamstopPropaga();
         });

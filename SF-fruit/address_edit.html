@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="">
+<head>
+<meta charset="utf-8">
+<title>编辑我的地址</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<!-- 网站开启对web app程序的支持 -->
+<meta content="yes" name="apple-mobile-web-app-capable"></meta>
+<!--忽略将页面中的数字识别为电话号码。-->
+<meta name="format-detection" content="telephone=no" />
+<meta name="Author" content="顺丰速运科技有限公司" />
+<meta name="Keywords" content="顺丰速运" />
+<meta name="Description" content="顺丰速运科技有限公司" />
+
+<link rel="stylesheet" type="text/css" href="style/MobReset.css" >
+<link rel="stylesheet" type="text/css" href="style/style.css" >
+<link rel="stylesheet" type="text/css" href="style/plug/mui.min.css">
+<link rel="stylesheet" type="text/css" href="style/plug/mui.picker.min.css">
+<style type="text/css">
+.mui-poppicker-header .mui-btn {width: 80px;}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<button id='showCityPicker3' class="mui-btn mui-btn-block" type='button'>三级联动示例 ...</button>
+<div id="cityResult3" class="ui-alert">你选择的城市是:北京市 北京市 东城区</div>
+
+</div>
+
+<!-- <script type="text/javascript" src="js/plug/sea/sea.min.js"></script> -->
+<script type="text/javascript" src="js/plug/jquery.min.js"></script>
+<script type="text/javascript" src="js/plug/mui/mui.min.js"></script>
+<script type="text/javascript" src="js/plug/mui/mui.picker.min.js"></script>
+<script type="text/javascript" src="js/city.data-3.js"></script>
+
+<script type="text/javascript">
+    //seajs.use(['./js/global.js'],function() {});
+
+</script>
+<script type="text/javascript">
+    (function($, doc) {
+        $.init();
+        $.ready(function() {
+            //                  //级联示例
+            var cityPicker3 = new $.PopPicker({
+                layer: 3
+            });
+            cityPicker3.setData(cityData3);
+            var showCityPickerButton = doc.getElementById('showCityPicker3');
+            var cityResult3 = doc.getElementById('cityResult3');
+            showCityPickerButton.addEventListener('tap', function(event) {
+                cityPicker3.show(function(items) {
+                    cityResult3.innerText = "选择的城市:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                });
+            }, false);
+        });
+    })(mui, document);
+</script>
+
+</body>
+</html>
+
