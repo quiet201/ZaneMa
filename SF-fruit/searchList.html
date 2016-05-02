@@ -22,15 +22,18 @@
 <body >
 <div class="wrap">
     <!-- 搜索框 -->
-    <section class="searchBox ">
+    <section class="searchBox js_searchBox">
         <div class="searchArea js_searchArea HBox" style="display: none1">
-            <a href="index.html"><i class="icoStyle icon-arrow "></i></a>
+            <a href="index.html" style="margin-right: 5px;"><i class="icoStyle icon-arrow"></i></a>
             <em class="icoStyle icon-search"></em>
-            <input class="Bflex1" type="text" placeholder="请输入你想要的美食" />
-            <span class="">搜索</span>
+            <p class="textArea Bflex1">
+                <input class=" js_searchTxt" type="text" placeholder="请输入你想要的美食" />
+            </p>
+            <em class="clearBtn icoStyle js_clearBtn active"></em>
+            <span class="searchBtn"><a href="searchList.html">搜 索</a></span>
         </div>
     </section>
-    <section class="contain js_contain" >
+    <section class="contain js_contain" style="padding-top: 5rem;" >
         <div class="conIScroll">
             <section class="carListBox">
                 <!-- 对应宝贝 -->
@@ -48,7 +51,7 @@
                                     <div class="Bflex1 listInfor priceArea">
                                         <h4>新西兰阳光金奇异果</h4>
                                         <p class="goodsWeight">规格：<span>尝鲜2斤装</span></p>
-                                        <p class="goodsPrice clearfix"><em class="fl">¥</em><span class="js_goodsPrice">29.90</span></p>
+                                        <p class="goodsPrice clearfix"><em class="fl">￥</em><span class="js_goodsPrice">29.90</span></p>
                                     </div>
                                 </div>
                                 <div class="box-amount HBox js_amountBox" style="display: none1">
@@ -56,7 +59,7 @@
                                     <input class="sumNum Bflex1 js_sumNum" type="text" value="1">
                                     <a class="addBtn js_handBtn" href="javascript:;"><em>+</em></a>
                                 </div>
-                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="">+</i></em></p>
+                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="addIcon"></i></em></p>
                             </section>
                         </li>
                         <li>
@@ -71,7 +74,7 @@
                                     <div class="Bflex1 listInfor priceArea">
                                         <h4>新西兰阳光金奇异果</h4>
                                         <p class="goodsWeight">规格：<span>尝鲜2斤装</span></p>
-                                        <p class="goodsPrice clearfix"><em class="fl">¥</em><span class="js_goodsPrice">29.90</span></p>
+                                        <p class="goodsPrice clearfix"><em class="fl">￥</em><span class="js_goodsPrice">29.90</span></p>
                                     </div>
                                 </div>
                                 <div class="box-amount HBox js_amountBox" style="display: none1">
@@ -79,7 +82,7 @@
                                     <input class="sumNum Bflex1 js_sumNum" type="text" value="1">
                                     <a class="addBtn js_handBtn" href="javascript:;"><em>+</em></a>
                                 </div>
-                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="">+</i></em></p>
+                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="addIcon"></i></em></p>
                             </section>
                         </li>
                         <li>
@@ -88,13 +91,13 @@
                                     <figure class="listImg">
                                         <a href="goodsDetail.html">
                                             <img src="image/goods1.jpg">
-                                            <i class="tip-hot"></i>
+                                            <i class="tip-tj"></i>
                                         </a>
                                     </figure>
                                     <div class="Bflex1 listInfor priceArea">
                                         <h4>新西兰阳光金奇异果</h4>
                                         <p class="goodsWeight">规格：<span>尝鲜2斤装</span></p>
-                                        <p class="goodsPrice clearfix"><em class="fl">¥</em><span class="js_goodsPrice">29.90</span></p>
+                                        <p class="goodsPrice clearfix"><em class="fl">￥</em><span class="js_goodsPrice">29.90</span></p>
                                     </div>
                                 </div>
                                 <div class="box-amount HBox js_amountBox" style="display: none1">
@@ -102,7 +105,7 @@
                                     <input class="sumNum Bflex1 js_sumNum" type="text" value="1">
                                     <a class="addBtn js_handBtn" href="javascript:;"><em>+</em></a>
                                 </div>
-                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="">+</i></em></p>
+                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="addIcon"></i></em></p>
                             </section>
                         </li>
                         <li>
@@ -111,13 +114,13 @@
                                     <figure class="listImg">
                                         <a href="goodsDetail.html">
                                             <img src="image/goods1.jpg">
-                                            <i class="tip-new"></i>
+                                            <i class="tip-give"></i>
                                         </a>
                                     </figure>
                                     <div class="Bflex1 listInfor priceArea">
                                         <h4>新西兰阳光金奇异果</h4>
                                         <p class="goodsWeight">规格：<span>尝鲜2斤装</span></p>
-                                        <p class="goodsPrice clearfix"><em class="fl">¥</em><span class="js_goodsPrice">29.90</span></p>
+                                        <p class="goodsPrice clearfix"><em class="fl">￥</em><span class="js_goodsPrice">29.90</span></p>
                                     </div>
                                 </div>
                                 <div class="box-amount HBox js_amountBox" style="display: none1">
@@ -125,7 +128,7 @@
                                     <input class="sumNum Bflex1 js_sumNum" type="text" value="1">
                                     <a class="addBtn js_handBtn" href="javascript:;"><em>+</em></a>
                                 </div>
-                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="">+</i></em></p>
+                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="addIcon"></i></em></p>
                             </section>
                         </li>
                         <li>
@@ -134,13 +137,13 @@
                                     <figure class="listImg">
                                         <a href="goodsDetail.html">
                                             <img src="image/goods1.jpg">
-                                            <i class="tip-new"></i>
+                                            <i class="tip-timeAct timeAct"></i>
                                         </a>
                                     </figure>
                                     <div class="Bflex1 listInfor priceArea">
                                         <h4>新西兰阳光金奇异果</h4>
                                         <p class="goodsWeight">规格：<span>尝鲜2斤装</span></p>
-                                        <p class="goodsPrice clearfix"><em class="fl">¥</em><span class="js_goodsPrice">29.90</span></p>
+                                        <p class="goodsPrice clearfix"><em class="fl">￥</em><span class="js_goodsPrice">29.90</span></p>
                                     </div>
                                 </div>
                                 <div class="box-amount HBox js_amountBox" style="display: none1">
@@ -148,7 +151,7 @@
                                     <input class="sumNum Bflex1 js_sumNum" type="text" value="1">
                                     <a class="addBtn js_handBtn" href="javascript:;"><em>+</em></a>
                                 </div>
-                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="">+</i></em></p>
+                                <p class="addCar js_addCar"><em class="icon-MyShopCar"><i class="addIcon"></i></em></p>
                             </section>
                         </li>
                     </ul>

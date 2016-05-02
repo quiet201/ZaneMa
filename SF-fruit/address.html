@@ -21,7 +21,60 @@
 <body>
 <div class="wrap">
     <section class="contain " style="top: 0;">
+        <!-- 地址选择 -->
+        <div class="addrBox seletAddrBox  " style="display: none1;">
+            <div class="addrDetail border_bot seletAddr">
+                <p class="indexAddr clearfix"><span>张三丰</span><span class="fr">15232458795</span></p>
+                <p class="js_tipDefault">
+                    <span><span class="default">[默认]</span>广东省深圳市南山区桂庙路口公园香水公寓5座3楼16室</span>
+                </p>
+            </div>
+            <div class="addrEditBox HBox BoxCenter">
+                <span class="Bflex2 js_DefaultBtn "><span class="checkBox icon-rightIcon active"></span>选择此地址</span>
+                <a class="btnStyle Bflex1" href="address_edit.html">编辑</a>
+                <a class="btnStyle Bflex1" href="#">删除</a>
+            </div>
+        </div>
 
+        <!-- 地址选择 -->
+        <div class="addrBox seletAddrBox  " style="display: none1;">
+            <div class="addrDetail border_bot seletAddr">
+                <p class="indexAddr clearfix"><span>张三丰</span><span class="fr">15232458795</span></p>
+                <p class="js_tipDefault">
+                    <span><span class="default"></span>广东省深圳市南山区桂庙路口公园香水公寓5座3楼16室</span>
+                </p>
+            </div>
+            <div class="addrEditBox HBox BoxCenter">
+                <span class="Bflex2 js_DefaultBtn"><span class="checkBox icon-rightIcon"></span>选择此地址</span>
+                <a class="btnStyle Bflex1" href="address_edit.html">编辑</a>
+                <a class="btnStyle Bflex1" href="#">删除</a>
+            </div>
+        </div>
+
+        <!-- 地址选择 -->
+        <div class="addrBox seletAddrBox  " style="display: none1;">
+            <div class="addrDetail border_bot seletAddr">
+                <p class="indexAddr clearfix"><span>张三丰</span><span class="fr">15232458795</span></p>
+                <p class="js_tipDefault">
+                    <span><span class="default"></span>广东省深圳市南山区桂庙路口公园香水公寓5座3楼16室</span>
+                </p>
+            </div>
+            <div class="addrEditBox HBox BoxCenter">
+                <span class="Bflex2 js_DefaultBtn"><span class="checkBox icon-rightIcon"></span>选择此地址</span>
+                <a class="btnStyle Bflex1" href="address_edit.html">编辑</a>
+                <a class="btnStyle Bflex1" href="#">删除</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="footer addrFoot">
+        <nav>
+            <ul class="HBox">
+                <li class="Bflex1"><a class="btnStyle" href="address_edit.html"><em class="icoStyle">+</em><span>新建地址</span></a> </li>
+                <li class="Bflex1"><a class="btnStyle btn_Bgred" href="#"> <span>使用淘宝地址</span></a></li>
+            </ul>
+        </nav>
     </section>
 </div>
 
@@ -29,6 +82,18 @@
 <script type="text/javascript" src="js/plug/jquery.min.js"></script>
 <script type="text/javascript">
     //seajs.use(['./js/global.js'],function() {});
+
+$(function() {
+    var _tip = '[默认]';
+    var oTipDefault = $('.js_tipDefault');
+    var oDefaultBtn = $('.js_DefaultBtn');
+    oDefaultBtn.on('click',function() {
+        var index = oDefaultBtn.index(this);
+        oDefaultBtn.find('.checkBox').removeClass('active').eq(index).addClass('active');
+        oTipDefault.find('.default').text('').eq(index).text(_tip)
+    });
+
+});
 </script>
 </body>
 </html>
