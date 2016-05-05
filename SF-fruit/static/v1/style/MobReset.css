@@ -95,8 +95,10 @@ em{font-style:normal;}
 ul, ol { list-style: none; }
 
 a { color: #666666; text-decoration: none;}
-a:visited { /*color: #888888;*/ }
-a:hover { /*color: #888888;*/ }
+/*
+a:visited {  }
+a:hover { }
+*/
 a:focus { outline: none; }
 
 a:hover, a:active { outline: 0; }

@@ -1,11 +1,11 @@
 ﻿seajs.config({
     alias: {
-      'hammer' : './js/plug/hammer.min.js',
-      'iscroll': './js/plug/clip/iscroll-zoom.js',
-      'layer'  :'./js/plug/layer/layer.js',
-      'lrz': './js/plug/clip/lrz.all.bundle.js',
-      'clip': './js/plug/clip/photoClip.js',
-      'public' :'./js/public.js',
+      'hammer' : './static/v1/js/plug/hammer.min.js',
+      'iscroll': './static/v1/js/plug/clip/iscroll-zoom.js',
+      'layer'  :'./static/v1/js/plug/layer/layer.js',
+      'lrz': './static/v1/js/plug/clip/lrz.all.bundle.js',
+      'clip': './static/v1/js/plug/clip/photoClip.js',
+      'public' :'./static/v1/js/public.js',
     }
 });
 
@@ -30,9 +30,12 @@ seajs.use(['hammer','iscroll','layer','lrz','public'], function(myHam,myIsc,myLa
         seajs.use(['clip'],function(myClip) {
             oPhotoListLi.each(function(i) {
                 ClipPhoto(oClipArea.eq(i),oFileAddr.eq(i),oClipBtn.eq(i),function(file) {
-
+                    myPub.loadLayer();
+                    $('.layermcont').append('<p style="padding-top:15px;">图片载入中……</P>');
                 },function(src) {
                     var beforImg = $('.photo-clip-view').find('img');
+                    $('.layermcont').find('p').remove();
+                    myPub.LayerCloseAll();
                     oClipBox.show();
                     oClipArea.hide().eq(i).show();
                     //取消载入的图片

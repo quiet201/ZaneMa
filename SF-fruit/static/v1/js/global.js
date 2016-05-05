@@ -1,14 +1,15 @@
 seajs.config({
     alias: {
-      'hammer' : './js/plug/hammer.min.js',
-      'iscroll': './js/plug/iscroll.min.js',
-      'layer'  :'./js/plug/layer/layer.js',
-      'public' :'./js/public.js',
+      'hammer' : './static/v1/js/plug/hammer.min.js',
+      // 'iscroll': './js/plug/iscroll.min.js',
+      'layer'  :'./static/v1/js/plug/layer/layer.js',
+      'public' :'./static/v1/js/public.js',
     }
 });
 
-seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPub) {
-   $(function () {
+seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
+    //seajs.use(['public'],function (myPub) {
+    $(function() {
         var oHeader = $('.js_header');              //头部
         var oContain = $('.js_contain');            //内容
         var oFooter = $('.js_footer');              //底部
@@ -61,6 +62,7 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
         var oUserMessage = $('.js_message').find('textarea');  //留言区域
         var oTrueGetBtn = $('.js_trueGetBtn');          //确认收货
         var oDelOrderBtn = $('.js_delOrderBtn');        //删除订单
+        var oCancelApply = $('.js_cancelApply');        //取消申请
 
 
         var maxLWord = $('.js_wordmax');               //最大字数
@@ -331,7 +333,7 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
                 myPub.TipLayer('亲，还没选择地址呢..^-^!');
             }
             else {
-                var _tit = '请核对您的收货地址';
+                var _tit = '请核对您的收货地址';//#666
                 var _cont = oUserAddr.find('.js_seletAddr a').html();
                 myPub.askLayer(_cont,function() {
                     alert('要跳转支付成功页面');
@@ -449,12 +451,46 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
         });
 
         //添加购物车动画
-        if(oFooter.find('li').length<=2) {
-            myPub.AddCarAnimate(oBtnAddCar,oMoveIcon,"74%","95%");
-        }
-        else {
-            myPub.AddCarAnimate(oBtnAddCar,oMoveIcon,"30%","94%");
-        }
+        var oShopCarTip = $('.js_userNum');
+        var clearTime;
+        var oGoodsList = $('.js_goodsList');
+        var dbTapOff = true;
+        oGoodsList.hammer().on('tap',function(e) {
+            //console.log(e)
+            if(dbTapOff) { //阻止多次点击 true 可点击
+                dbTapOff = false;
+                var _tags = e.gesture.target.offsetParent;
+                var _tagsParent = $(_tags);
+                var _X = e.gesture.center.x;
+                var _Y = e.gesture.center.y;
+                //console.log(_tagsParent.parents('.picList').find('h4').text());
+                //console.log(_tagsParent.parents('li').find('.js_addCar').attr('_id'));
+                console.log(_tagsParent.parents('li').index());
+                if(_tags.nodeName.toLowerCase() == 'p' || _tags.nodeName.toLowerCase() == 'em') {
+                    var aLi = $(this).find('.js_addCar');
+                    var sLeft;
+                    if(oFooter.find('li').length<=2) {
+                        sLeft = "70%";
+                    }
+                    else {
+                        sLeft = "30%";
+                    }
+                    myPub.AddCarAnimate(_X,_Y,oMoveIcon,sLeft,"94%",function() {
+                            oShopCarTip.addClass('mybounceIn');
+                            clearTimeout(clearTime);
+                            clearTime = setTimeout(function() {
+                                oShopCarTip.removeClass('mybounceIn');
+                                dbTapOff = true;
+                            },800);
+                        });
+                    myPub.HamstopPropaga();
+                }
+            }
+        });
+
+
+
+
 
         // 弹出商家信息列表
         oContactBossBtn.on('click',function() {
@@ -479,21 +515,21 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
             },function() {
                 alert('取消了');
 
-            },'提示');
+            },'no');
         });
         // 售后订单被取消弹框
-        // oTrueGetBtn.hammer().on('tap',function() {
-        //     var _cont = '<p class="delTipP" >此订单正在售后处理</p><span class="delTipSpan">确认收货将取消售后申请</span>';
-        //     myPub.askLayer(_cont,function() {
-        //         // 判断删除店家
-        //         alert('确定');
-        //         myPub.LayerCloseAll();
+        oCancelApply.hammer().on('tap',function() {
+            var _cont = '<p class="delTipP" >此订单正在售后处理</p><span class="delTipSpan">确认收货将取消售后申请</span>';
+            myPub.askLayer(_cont,function() {
+                // 判断删除店家
+                alert('确定');
+                myPub.LayerCloseAll();
 
-        //     },function() {
-        //         alert('取消了');
+            },function() {
+                alert('取消了');
 
-        //     },'提示');
-        // });
+            },'no');
+        });
 
 
 
@@ -507,7 +543,7 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
                 myPub.LayerCloseAll();
             },function() {
                 alert('取消了');
-            },'提示');
+            },'no');
         });
 
 
@@ -525,12 +561,16 @@ seajs.use(['hammer','iscroll','layer','public'], function(myHam,myIsc,myLay,myPu
                 oCanOrderInfo.show();
                 // 弹框原因选择
                 var _oReasonListLi = $('.js_reasonList').find('li');
+                var oUserMessage = $('.js_message').find('textarea');  //留言区域
+                var maxLWord = $('.js_wordmax');               //最大字数
                 _oReasonListLi.hammer().off('tap');
                 _oReasonListLi.hammer().on('tap',function() {
                     _oReasonListLi.removeClass('active');
                     $(this).addClass('active');
                 });
+                myPub.statInputNum(oUserMessage,maxLWord);
             });
+
         });
 
         // 原因选择

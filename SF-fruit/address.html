@@ -12,8 +12,8 @@
 <meta name="Keywords" content="顺丰速运" />
 <meta name="Description" content="顺丰速运科技有限公司" />
 
-<link rel="stylesheet" type="text/css" href="style/MobReset.css" >
-<link rel="stylesheet" type="text/css" href="style/style.css" >
+<link rel="stylesheet" type="text/css" href="static/v1/style/MobReset.css" >
+<link rel="stylesheet" type="text/css" href="static/v1/style/style.css" >
 <style type="text/css">
 </style>
 
@@ -78,8 +78,8 @@
     </section>
 </div>
 
-<script type="text/javascript" src="js/plug/sea/sea.min.js"></script>
-<script type="text/javascript" src="js/plug/jquery.min.js"></script>
+
+<script type="text/javascript" src="static/v1/js/plug/jquery.min.js"></script>
 <script type="text/javascript">
     //seajs.use(['./js/global.js'],function() {});
 
@@ -90,7 +90,7 @@ $(function() {
     oDefaultBtn.on('click',function() {
         var index = oDefaultBtn.index(this);
         oDefaultBtn.find('.checkBox').removeClass('active').eq(index).addClass('active');
-        oTipDefault.find('.default').text('').eq(index).text(_tip)
+        oTipDefault.find('.default').text('').eq(index).text(_tip);
     });
 
 });

@@ -1,23 +1,28 @@
 define(function(require,exports,module) {
 
     //加入购物车的动画
-    function AddCarAnimate(obj,target,sLeft,sTop) {
-        obj.on('click',function(e) {
-            // console.log(e.target.innerHTML);
-            target.removeClass('MAnimate');
-            var _X = e.clientX;
-            var _Y = e.clientY;
+    function AddCarAnimate(_X,_Y,target,sLeft,sTop, callBack) {
+        // obj.hammer().on('tap',function(e) {
+            //console.log(e);
+            // var _X = e.gesture.center.x;
+            // var _Y = e.gesture.center.y;
+            var time = null;
+            target.removeClass('myRotateFast');
             target.css({ 'left':_X,'top':_Y, 'opacity':1});
-            clearTimeout(obj.time);
-            obj.time = setTimeout(function() {
-                target.addClass('MAnimate myRotateFast').css({'left':sLeft,'top':sTop, 'opacity':0});
-                clearTimeout(obj.time1);
-                obj.time1 = setTimeout(function() {
-                    target.removeClass('myRotateFast');
-                },3000);
-            },10);
-            e.stopPropagation();
-        });
+            clearTimeout(time);
+            time = setTimeout(function() {
+                target.addClass('myRotateFast').stop().animate({'left':_X,'top':_Y-50, 'opacity':1},300,function() {
+                    target.stop().animate({'left':sLeft,'top':sTop, 'opacity':0},900,function() {
+                        target.removeClass('myRotateFast');
+                        if(callBack) callBack();
+                    });
+                });
+
+            },30);
+            // HamstopPropaga();
+            // e.stopPropagation();
+            // e.preventDefault()
+        // });
     }
     exports.AddCarAnimate = AddCarAnimate;
 
@@ -46,61 +51,6 @@ define(function(require,exports,module) {
     exports.onHammerSwiper = onHammerSwiper;
 
 
-
-
-    /*************** 滚动条效果 s***************/
-    function ScrollBar(obj) {
-        this.obj = obj;
-    }
-
-    //添加滚动条
-    ScrollBar.prototype.AddScroll = function (obj,sOptions) {
-        this.obj = new IScroll(obj,sOptions);
-    };
-    //刷新滚动条
-    ScrollBar.prototype.ReScroll = function () {
-        this.obj.refresh();
-    };
-
-    //删除滚动条
-    ScrollBar.prototype.DelScroll = function () {
-        this.obj.destroy();
-    };
-    //跳转指定位置
-    ScrollBar.prototype.GotoScroll = function (clsName) {
-        //需要给ul加class名称才能行
-        var _clsName = this.obj.scroller.className.replace(' ', '.');
-        //console.log(this.obj.scroller)
-        //console.log(document.querySelector('.' + _clsName + ' li' + clsName))
-        this.obj.scrollToElement(document.querySelector('.' + _clsName), '', 0, 0);
-    };
-
-    //滚动结束事件
-    ScrollBar.prototype.ScrollEnd = function (fn) {
-        var _this = this.obj;
-        _this.on('scrollEnd', fn);
-    };
-
-     //滚动监听
-    ScrollBar.prototype.ScrollIng = function (fn) {
-        var _this = this.obj;
-        this.obj.on('scroll', fn);
-    };
-    //滚动下拉slideDown
-    // ScrollBar.prototype.SlideDown = function (fn) {
-    //     var _this = this.obj;
-    //     this.obj.on('slideDown', fn);
-    // };
-    // //滚动上拉slideUp
-    // ScrollBar.prototype.SlideUp = function (fn) {
-    //     var _this = this.obj;
-    //     this.obj.on('slideUp', fn);
-    // };
-
-    exports.ScrollBar = ScrollBar;
-    /*************** 滚动条效果 e***************/
-
-
      /* 数字验证 */
     function ValiNum(obj,fn1,fn2) {
         var reg = new RegExp("^[0-9]*$");
@@ -116,14 +66,15 @@ define(function(require,exports,module) {
     exports.ValiNum = ValiNum;
 
     /* 字数统计 */
-     function statInputNum(textArea,numItem) {
+    function statInputNum(textArea,numItem) {
         var max =  numItem.eq(0).text();
         var curLength = 0;
             textArea.each(function(i) {
                 textArea.eq(i).attr("maxlength", max).on('input propertychange', function () {
+
                     curLength = $(this).val().length;
                     numItem.eq(i).empty().text(max - curLength);
-                });
+                 });
             });
 
     }
@@ -154,7 +105,7 @@ define(function(require,exports,module) {
     function TipLayer (sCont,sStyle,fn) {
         layer.open({
             content: sCont,
-            style:sStyle || 'background-color:rgba(0,0,0,0.5); color:#fff; border:none; border-radius: 10px;',
+            style:sStyle || 'background-color:rgba(0,0,0,0.5); color:#fff; border:none; border-radius: 5px;',
             scrollbar: false,
             time: 2,
             success:function() {if(fn)fn();}
@@ -190,7 +141,8 @@ define(function(require,exports,module) {
     //询问层
     function askLayer(sCont,yesFn, noFn,sTit,callBack) {
         layer.open({
-            title:sTit || '',
+            //no 为没有标题 sTit为设置标题
+            title:sTit != 'no' ? sTit : '',
             content: sCont,
             btn: ['确认', '取消'],
             shadeClose: false,
@@ -213,8 +165,8 @@ define(function(require,exports,module) {
     exports.LayerCloseAll = LayerCloseAll;
 
     //加载层
-    function loadLayer() {
-        layer.open({type: 2});
+    function loadLayer(cont) {
+        layer.open({type: 2,content:cont,shadeClose: false,});
     }
     exports.loadLayer = loadLayer;
 
@@ -230,6 +182,60 @@ define(function(require,exports,module) {
         }, 20);
     }
     exports.throttle = throttle;
+
+
+
+    /*************** 滚动条效果 s***************/
+    // function ScrollBar(obj) {
+    //     this.obj = obj;
+    // }
+
+    // //添加滚动条
+    // ScrollBar.prototype.AddScroll = function (obj,sOptions) {
+    //     this.obj = new IScroll(obj,sOptions);
+    // };
+    // //刷新滚动条
+    // ScrollBar.prototype.ReScroll = function () {
+    //     this.obj.refresh();
+    // };
+
+    // //删除滚动条
+    // ScrollBar.prototype.DelScroll = function () {
+    //     this.obj.destroy();
+    // };
+    // //跳转指定位置
+    // ScrollBar.prototype.GotoScroll = function (clsName) {
+    //     //需要给ul加class名称才能行
+    //     var _clsName = this.obj.scroller.className.replace(' ', '.');
+    //     //console.log(this.obj.scroller)
+    //     //console.log(document.querySelector('.' + _clsName + ' li' + clsName))
+    //     this.obj.scrollToElement(document.querySelector('.' + _clsName), '', 0, 0);
+    // };
+
+    // //滚动结束事件
+    // ScrollBar.prototype.ScrollEnd = function (fn) {
+    //     var _this = this.obj;
+    //     _this.on('scrollEnd', fn);
+    // };
+
+    //  //滚动监听
+    // ScrollBar.prototype.ScrollIng = function (fn) {
+    //     var _this = this.obj;
+    //     this.obj.on('scroll', fn);
+    // };
+    //滚动下拉slideDown
+    // ScrollBar.prototype.SlideDown = function (fn) {
+    //     var _this = this.obj;
+    //     this.obj.on('slideDown', fn);
+    // };
+    // //滚动上拉slideUp
+    // ScrollBar.prototype.SlideUp = function (fn) {
+    //     var _this = this.obj;
+    //     this.obj.on('slideUp', fn);
+    // };
+
+    //exports.ScrollBar = ScrollBar;
+    /*************** 滚动条效果 e***************/
 
 
 });

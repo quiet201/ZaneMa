@@ -1,4 +1,4 @@
-seajs.use('./js/plug/swiper.jquery.min.js',function() {
+seajs.use('./static/v1/js/plug/swiper.jquery.min.js',function() {
     $(function() {
         var sTime = null;                           //时间
         var oSilderImg = $('.js_silderImg');        //广告轮播框
@@ -12,16 +12,19 @@ seajs.use('./js/plug/swiper.jquery.min.js',function() {
         var oOrderHeadNav = $('.js_orderHead');     //订单导航
         var oEmptyIcon = $('.js_emptyIcon');        //订单空的图标
 
+
+        var oGoodsList = $('.js_goodsList');
+
         // 首页导航轮播
-        var _indexIHeight = [];
+        // _indexPage.each(function(i) {
+        //     _indexIHeight.push(_indexPage.eq(i).outerHeight(true));
+        //     return _indexIHeight;
+        // });
+        //oIndexPage.css({ 'height': _indexIHeight[0] + 'px' });
+        var _indexIHeight;
         var _indexPage = oIndexPage.find('.js_listSlide');
-        _indexPage.each(function(i) {
-            _indexIHeight.push(_indexPage.eq(i).outerHeight(true));
-            return _indexIHeight;
-        });
-
-        oIndexPage.css({ 'height': _indexIHeight[0] + 'px' });
-
+        var _indexIHeight = _indexPage.eq(0).outerHeight(true);
+        var _indexLiH = oGoodsList.eq(0).find('li').eq(0).outerHeight(true);
         var oIndexSwiper = oIndexPage.swiper({
             pagination: oIndexNav[0],
             paginationClickable: true,
@@ -36,7 +39,13 @@ seajs.use('./js/plug/swiper.jquery.min.js',function() {
                 return '<li class="Bflex1 '+className+'"><a>'+name+'</a></li>';
             },
             onSlideChangeEnd: function (swiper) {
-                oIndexPage.css({ 'height': _indexIHeight[swiper.activeIndex] + 'px' });
+                if(swiper.activeIndex !== 0) {
+                    oIndexPage.css({ 'height': _indexLiH*2 + 'px' });
+                }
+                else {
+                    oIndexPage.css({ 'height': _indexIHeight + 'px' });
+                }
+
                 $(window).scrollTop(0);
             }
         });
