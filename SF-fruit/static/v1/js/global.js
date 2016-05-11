@@ -16,17 +16,23 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
         var oNavSecList = $('.js_navSecList');      //二级导航
         var oNavSecUl = $('.js_navSecList').find('ul');      //二级导航ul
         var oNavSecLi = $('.js_navSecList').find('li');      //二级导航li
+
+        var oGoTop = $('.js_goTop');                //回到顶部
+
+
         var oGoodsBox = $('.js_goodsBox');          //产品页面
         var oSearchBox = $('.js_searchBox');        //搜索框
         var oIndexSearch = $('.js_IndexSearch');    //搜索历史
         var oSearchArea = $('.js_searchArea');      //搜索框区域
         var oSStart = $('.js_sStart');              //开始搜索按钮
         var oSCancel = $('.js_sCancel');            //取消搜索按钮
+
         var oBtnAddCar = $('.js_addCar');           //加入购物车按钮
         var oMoveIcon = $('.js_moveIcon');          //加入购物车动态标记
-        var oGoTop = $('.js_goTop');                //回到顶部
+
         var oSearchTxt = $('.js_searchTxt');        //搜索框
         var oSearchClear = $('.js_clearBtn');       //搜索框清空
+
         var oSeletSide = $('.js_seletSide');        //下滑窗口
         var oBotCloseBtn = $('.js_closeBtn');       //关闭按钮
         var oArrDownBtn = $('.js_arrDownBtn');      //下滑按钮
@@ -52,6 +58,7 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
         var oAmountBox = $('.js_amountBox');        //数量框
         var oGoodsPrice = $('.js_goodsPrice');      //产品价格
         var oSumNum = $('.js_sumNum');              //总数
+        var oBtnPay = $('.js_btnPay');                 //提交按钮
 
         var oContactBossBtn = $('.js_contactBoss');     //联系商家信息按钮 js_contactBoss
         var oBossInfo = $('.js_bossInfo');              //商家信息 js_bossInfo
@@ -59,14 +66,13 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
         var oReasonList = $('.js_reasonList');          //取消原因选择
         var oCanOrderBtn = $('.js_cancelOrderBtn');     //取消订单按钮
         var oCanOrderInfo = $('.js_cancelOrder');       //取消订单信息
-        var oUserMessage = $('.js_message').find('textarea');  //留言区域
+
         var oTrueGetBtn = $('.js_trueGetBtn');          //确认收货
         var oDelOrderBtn = $('.js_delOrderBtn');        //删除订单
         var oCancelApply = $('.js_cancelApply');        //取消申请
 
-
+        var oUserMessage = $('.js_message').find('textarea');  //留言区域
         var maxLWord = $('.js_wordmax');               //最大字数
-        var oBtnPay = $('.js_btnPay');                 //提交按钮
         var oUserAddr = $('.js_userAddr');             //用户现在的地址
 
 
@@ -137,6 +143,7 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
 
 
 /**********************************  增加减少 start   ***********************************/
+   /*
         if(oAmountBox.length > 0) {
             oAmountBox.each(function(i) {
                 var oHandBtn = oAmountBox.eq(i).find('.js_handBtn');
@@ -200,12 +207,12 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
 
             });
         }
-
+    */
 /**********************************  增加减少 end     ***********************************/
 
 
 /**********************************  购物车 start *************************************/
-
+/*
 
         if(oCarListArea.length>0) {
             myPub.ShopSumPrice(oCheckBox,'.listBox','.js_goodsPrice',oSumPrice);
@@ -349,12 +356,13 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
             }
 
         });
-
+*/
 
 /**********************************  购物车 end   *************************************/
 
 
 /**********************************  下滑窗口 start   **********************************/
+    /*
         var oSeletSideH = oSeletSide.outerHeight(true);
         var ArrDownHam = new myPub.onHammerSwiper();
         var jumpBtn = false;     //判断是加入购物车false 还是结账true
@@ -417,36 +425,36 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
             var index = $(this).index();
              oGoodsSizeUl.find('li').removeClass('active').eq(index).addClass('active');
         });
-
+    */
 /**********************************  下滑窗口 end     **********************************/
 
-/**********************************  部分公共操作 start     **********************************/
-        //显示搜索框
-        oSStart.hammer().on('tap',function(e) {
-            oSearchArea.show().eq(1).hide();
-            oGoodsBox.hide();
-            oFooter.hide();
-            oIndexSearch.show();
-            oHeader.hide();
-            oContain.hide();
-            oSearchTxt.focus();
-        });
+/**********************************  部分公共操作 start **********************************/
+        // //显示搜索框
+        // oSStart.hammer().on('tap',function(e) {
+        //     oSearchArea.show().eq(1).hide();
+        //     oGoodsBox.hide();
+        //     oFooter.hide();
+        //     oIndexSearch.show();
+        //     oHeader.hide();
+        //     oContain.hide();
+        //     oSearchTxt.focus();
+        // });
 
-        //隐藏搜索框
-        oSCancel.hammer().on('tap',function(e) {
-            oSearchArea.show().eq(0).hide();
-            oGoodsBox.show();
-            oFooter.show();
-            oIndexSearch.hide();
-            oHeader.show();
-            oContain.show();
-            oSearchTxt.blur();
-        });
+        // //隐藏搜索框
+        // oSCancel.hammer().on('tap',function(e) {
+        //     oSearchArea.show().eq(0).hide();
+        //     oGoodsBox.show();
+        //     oFooter.show();
+        //     oIndexSearch.hide();
+        //     oHeader.show();
+        //     oContain.show();
+        //     oSearchTxt.blur();
+        // });
 
         // 清空搜索框  oSearchClear
         oSearchClear.hammer().on('tap',function() {
             oSearchTxt.val('');
-            $(this).addClass('active');
+            $(this).addClass('active').siblings('.js_Text').val('').siblings('.js_error').hide().removeClass('on');
         });
 
         // 显示清空按钮
@@ -469,7 +477,7 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
                 var _Y = e.gesture.center.y;
                 //console.log(_tagsParent.parents('.picList').find('h4').text());
                 //console.log(_tagsParent.parents('li').find('.js_addCar').attr('_id'));
-                console.log(_tagsParent.parents('li').index());
+                //console.log(_tagsParent.parents('li').index());
                 if(_tags.nodeName.toLowerCase() == 'p' || _tags.nodeName.toLowerCase() == 'em') {
                     var aLi = $(this).find('.js_addCar');
                     var sLeft;
@@ -493,6 +501,92 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
                 }
             }
         });
+
+
+
+
+
+        /*
+        var oOrderSlide = $('.js_orderInfoBox').find('.swiper-slide');
+
+        oOrderSlide.hammer().on('tap',function(e) {
+            //console.log(e.gesture.target)
+            var _btnA = $(e.gesture.target);
+            var _typeNum = _btnA.attr('_type')*1;
+
+            switch(_typeNum) {
+                // 0 联系商家
+                case 0:
+                    var styleTitle = 'width:100%;  border:none';
+                    var _sBossInfo= _btnA.parents('.js_cBossA').siblings('.js_bossInfo');
+                    var _index = oBossInfo.index(_sBossInfo);
+                    var _BossName = oBossName.eq(_index).text();
+                    _sBossInfo.show();
+                    myPub.TipTitleLayer('联系商家: '+_BossName,styleTitle, _sBossInfo.html(),function() {
+                        _sBossInfo.hide();
+                    });
+
+                    break;
+                // 1 取消订单
+                case 1:
+                    var styleTitle = '请选择取消原因';
+                    myPub.askLayer(oCanOrderInfo.html(),function() {
+                        alert('yes');
+                    },function() {
+                        alert('no');
+                        oCanOrderInfo.hide();
+                    },styleTitle,
+                    function() {
+                        oCanOrderInfo.show();
+                        // 弹框原因选择
+                        var _oReasonListLi = $('.js_reasonList').find('li');
+                        var oUserMessage = $('.js_message').find('textarea');  //留言区域
+                        var maxLWord = $('.js_wordmax');               //最大字数
+                        _oReasonListLi.hammer().off('tap');
+                        _oReasonListLi.hammer().on('tap',function() {
+                            _oReasonListLi.removeClass('active');
+                            $(this).addClass('active');
+                        });
+                        myPub.statInputNum(oUserMessage,maxLWord);
+                    });
+                    break;
+                // 2 立即付款
+                case 2: alert(_typeNum);
+                    break;
+                // 3 申请售后
+                case 3: alert(_typeNum);
+                    break;
+                // 4 查看物流
+                case 4: alert(_typeNum);
+                    break;
+                // 5 确认收货
+                case 5:
+                    var _cont = '<p class="delTipP" >亲！ 确定您已收到货物了吗？</p><span class="delTipSpan">确认收货后此交易将会关闭</span>';
+                    myPub.askLayer(_cont,function() {
+                        alert('确定' + _typeNum);
+                        myPub.LayerCloseAll();
+
+                    },function() {
+                        alert('取消了' + _typeNum);
+
+                    },'no');
+                    break;
+                // 6 删除订单
+                case 6:
+                    var _cont = '<p class="delTipP" >亲！ 您确定要删除此订单吗？</p><span class="delTipSpan">删除后此订单会永远消失</span>';
+                        myPub.askLayer(_cont,function() {
+                            alert('确定' + _typeNum);
+                            myPub.LayerCloseAll();
+                        },function() {
+                            alert('取消了' + _typeNum);
+                        },'no');
+                    break;
+                default:;
+                    break;
+            }
+        });
+*/
+
 
 
 
@@ -592,6 +686,7 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
         }
 
 
+        /*
         // 搜索设置cookie
         var cTime = 'h2';  //coookie 时间
         var _val = [];
@@ -613,7 +708,7 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
             for(var i=0; i<cookArry.length; i++) {
                 if(cookArry[i].charAt(0) == 'r') {
                     _val[i] = cookArry[i].substring( cookArry[i].indexOf('=')+1 );
-                    oHisListUl.prepend('<li>'+ _val[i] +'</li>');
+                    oHisListUl.prepend('<li>'+ unescape(_val[i]) +'</li>');
                 }
 
             }
@@ -646,9 +741,56 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
                 alert('no')
             },'no');
         });
+        */
 
+/*
+    // 发送验证码
+    var oGetCode = $('.js_getCode'); //发送验证码
+    var oInputText = $('.js_Text');  //输入框
+    var oPhonetext = $('.js_phonetext');  //手机输入框
+    var oTipError = $('.js_error');
+    // 显示清空按钮
+    oInputText.on('input propertychange',function() {
+        $(this).val() == '' ? $(this).siblings('.js_clearBtn').addClass('active') : $(this).siblings('.js_clearBtn').removeClass('active');
+    });
 
-/**********************************  部分公共操作 end     **********************************/
+    oPhonetext.on('focus',function(e){
+        oPhonetext.siblings('.js_error').hide().text('').removeClass('on')
+    })
+
+    oPhonetext.on('blur',function() {
+        myPub.checkMobile(oPhonetext,function() {
+            oPhonetext.siblings('.js_error').show().text('请输入手机号码').addClass('on');
+        },function() {
+            oPhonetext.siblings('.js_error').show().text('请输入正确的手机号码').addClass('on');
+        },function() {
+            oPhonetext.siblings('.js_error').hide().text('').removeClass('on')
+        })
+    })
+
+    oGetCode.eq(0).on('click',function() {
+        if(!oTipError.eq(0).hasClass('on')) {
+            myPub.checkMobile(oPhonetext,function() {
+                oPhonetext.siblings('.js_error').show().text('请输入手机号码').addClass('on');
+            },function() {
+                oPhonetext.siblings('.js_error').show().text('请输入正确的手机号码').addClass('on');
+            },function() {
+                oPhonetext.siblings('.js_error').hide().text('').removeClass('on');
+                oGetCode.hide().eq(1).show();
+                myPub.CutTime(3,function(_time) {
+                    oGetCode.hide().eq(0).show();
+                    oGetCode.eq(1).find('span').text(_time+'s');
+                    myPub.TipBtnLayer('您的手机号码已与其他QQ绑定，如果绑定请继续点击获取验证码，输入验证码验证后将解除与其他QQ号的绑定关系。','提示')
+                },function(time) {
+                    oGetCode.eq(1).find('span').text(time+'s');
+                })
+            })
+        }
+
+    });
+*/
+
+/**********************************  部分公共操作 end   **********************************/
 
 
    });

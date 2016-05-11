@@ -114,8 +114,9 @@ define(function(require,exports,module) {
     exports.TipLayer = TipLayer;
 
     //带按钮提示框
-    function TipBtnLayer (sCont) {
+    function TipBtnLayer (sCont,sTit) {
         layer.open({
+            title: sTit != 'no' ? sTit : '',
             content: sCont,
             btn:['确定'],
             shadeClose: false,
@@ -240,6 +241,41 @@ define(function(require,exports,module) {
         }
     }
 
+    /* 验证码倒计时 */
+    function CutTime(time,fn1,fn2) {
+        var _AllTime = time;
+        var _T = null;
+        clearInterval(_T);
+        _T = setInterval(function() {
+            if(time<=0) {
+                clearInterval(_T);
+                if(fn1)fn1(_AllTime);
+            }
+            else {
+                time--;
+                if(fn2)fn2(time);
+            }
+        },1000)
+    }
+    exports.CutTime = CutTime;
+
+    /*手机号码验证*/
+    function checkMobile(obj,fn1,fn2,fn3){
+        var oIphone = obj.val();
+        var reg = /^(1[3|5|7|8])[\d]{9}$/;   //验证手机号码
+
+        if(oIphone == '') {
+            if(fn1)fn1()
+        }
+        else if (!reg.test(oIphone) ){
+
+            if(fn2)fn2();
+        }
+        else {
+            if(fn3)fn3();
+        }
+    }
+    exports.checkMobile = checkMobile;
 
 
 
