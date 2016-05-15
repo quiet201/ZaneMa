@@ -1,0 +1,92 @@
+@charset "UTF-8";
+html,body {max-width: 640px; width: 100%; position: relative; margin:0 auto; background: #000; overflow: hidden;}
+
+.wrap {background: #fff; padding-bottom: 30px;}
+
+/*特惠*/
+.tehui {padding:5%; background: #fff;}
+.tehui img {width: 35%; display: block; margin:0 auto;}
+
+.thList {border-top: 1px solid #f6f6f6; position: relative;}
+
+.thBtn {position: absolute; bottom: 35px; right: 15px;}
+
+
+/*秒杀*/
+.msArea {position: relative;}
+.actTip {width: 100%; height: 100%; position: absolute; left: 0; top: 0;}
+.msBtnarea {position: absolute; bottom: 25px; left: 25px;}
+.timeBox {width: auto; position: absolute; left: 0; top: 10px; color: #fff;  background: #ad030d; border-top-right-radius: 25px; border-bottom-right-radius: 25px; line-height: 14px; padding:8px 15px;}
+.timeBox span {display: inline-block; vertical-align: middle; }
+.timeBox .timeIcon {width: 20px; height: 23px; display: inline-block; vertical-align: middle; margin-left: 10px;}
+.timeBox .timeIcon img {display: block; height: 100% }
+.timeBox .cuttime {font-size: 18px; font-weight: bold; vertical-align: top;}
+.overTip {position: absolute; right: 10px; top: 10px; height: 80px; width: 80px;}
+
+/*活动说明*/
+.shadow,
+.actInto {background-color:rgba(0,0,0,.6); position: absolute; height: 100%; width: 100%; left: 0; top: 0; z-index: 90;}
+.actInto { padding:20% 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.actInto .imgBox {position:absolute; left: 50%; margin-left: -45%; width: 90%;  top: auto;}
+.actInto img { display: block; margin: 0 auto; }
+
+/* 弹框 */
+.jumpTip {width: 90%;  position: absolute; left: 50%; top: 20%; margin-left: -45%; height: 50%; }
+.jumpTip .layPic img{width: 30%; position: absolute; left: 50%; margin-left: -15%; top: 10%;}
+.jumpTip .layPic p {position: absolute; width: 98%; text-align: center; left: 50%; margin-left: -49%; bottom: 35%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; overflow: hidden;  }
+.jumpTip .layPic .layBtn {position: absolute; bottom: 20%; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; width: 120px; left: 50%; margin-left: -60px;}
+
+/*公共*/
+.btnstyle {text-align: center; font-size: 16px; padding:1.5% 3%; border-radius: 5px; line-height: 16px; border: 1px solid #e54c55; color: #e54c55; background: #fff;}
+.btnColor_red {background-color:#e54c55; color: #fff; border-color: #e54c55 }
+.btnColor_hui {  color: #d3d3d3; border-color: #d3d3d3 }
+
+.closeBtn {height: 30px; width: 30px; background-color: #e75b63; background-image: url(../img/close.png); background-position: center center; background-repeat: no-repeat; position: absolute; right: 5px; top: 5px; border-radius: 50%; }
+
+/*加载页面*/
+.layLoading {background-color:#fff; position: absolute; height: 100%; width: 100%; left: 0; top: 0; z-index: 120;}
+.layLoading .loadImg {position: absolute; width: 150px; left: 50%; margin-left: -75px; top: 20%;}
+.layLoading .progress {width: 80%;   border-radius: 25px; height: 4px; position: absolute; top: 50%; margin-top: -2px; left: 50%; margin-left: -40%; background: rgba(0,0,0,.4); overflow: hidden;}
+.progress .progressbar {background: #e54c55; border-radius: 25px; margin-top: 0; height: 4px; width: 0%;}
+.layLoading .loadTxt {color: #000; position: absolute; top:52%; width: 90%; left: 50%; margin-left: -45%; text-align: center; border-radius: 25px;}
+
+
+@media screen and (min-device-width: 651px) {
+    .msBtnarea {bottom: 50px; left: 45px;}
+    .thBtn {bottom: 58px; right: 80px;}
+}
+
+@media screen and (min-device-width: 580px) and (max-device-width: 650px) {
+    .msBtnarea {bottom: 50px; left: 45px;}
+    .thBtn {bottom: 58px; right: 80px;}
+}
+
+@media screen and (min-device-width: 500px) and (max-device-width: 580px) {
+    .msBtnarea {bottom: 45px; left: 40px;}
+    .thBtn {bottom: 50px; right: 60px;}
+}
+
+@media screen and (min-device-width: 430px) and (max-device-width: 500px) {
+    .msBtnarea {bottom: 35px; left: 30px;}
+    .thBtn {bottom: 40px; right: 48px;}
+}
+
+@media screen and (min-device-width: 375px) and (max-device-width: 430px) {
+    /*.msBtnarea {bottom: 35px; left: 30px;}*/
+    .thBtn {bottom: 35px; right: 20px;}
+}
+
+@media screen and (min-device-width: 325px) and (max-device-width: 375px) {
+    .msBtnarea {bottom: 20px; left: 24px;}
+    .thBtn {bottom: 30px; right: 15px;}
+}
+
+@media screen and (max-device-width: 325px) {
+    .msBtnarea {bottom: 12px; left: 19px;}
+    .thBtn {bottom: 24px; right: 15px;}
+}
+
