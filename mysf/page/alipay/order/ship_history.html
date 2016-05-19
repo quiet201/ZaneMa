@@ -3,18 +3,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>寄件</title>
-<link rel="stylesheet" type="text/css" href="../../../css/style_juzhen.css?2.0">
+<title>寄件-历史</title>
+<link rel="stylesheet" type="text/css" href="../../../css/style.css?2.0">
 <link rel="stylesheet" href="../../../version/M3.0/css/M_style.css">
-<!-- <link rel="stylesheet" href="../../../version/feastCss/autumn/autumn.css"> -->
-<!-- <link rel="stylesheet" href="../../../version/feastCss/double11/double11.css"> -->
-<!-- <link rel="stylesheet" href="../../../version/feastCss/christmas/christ.css"> -->
-
 <!-- <script type="text/javascript" src="../../../js/jquery-1.7.2.min.js?2.0"></script> -->
 <script type="text/javascript" src="../../../js/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="../../../js/date.js?2.0"></script>
+<!-- <script type="text/javascript" src="../../../js/date.js?2.0"></script>
 <script type="text/javascript" src="../../../js/iscroll.js?2.0"></script>
-<script type="text/javascript" src="../../../js/jquery.tools.min.js?2.0"></script>
+<script type="text/javascript" src="../../../js/jquery.tools.min.js?2.0"></script> -->
 
 </head>
 <body>
@@ -26,7 +22,7 @@
     <!-- 节日头部s -->
     <div class="feastTop"></div>
     <!-- 节日头部e -->
-	<div class="order clearfix" style="margin-bottom: 10rem;">
+	<div class="order clearfix">
 		<dl class="contacts sent arrow clearfix" onClick="toSelectAddressBook()" >
 			<!-- 内容为空时 -->
 				<p id="selectSenderHint" >请添加寄件人信息</p>
@@ -67,7 +63,6 @@
 		</dl>
 		<!--star电子运单-->
 		<ul class="order_box mt10 clearfix">
-
 			<li class="special clearfix">
                 <!-- 节日标记 -->
                 <div class="feastMid1"></div>
@@ -75,7 +70,7 @@
 				<dl class="first option_select" id="depositumDiv" showDivId="div_id_content_wpmc">
 					<dt class="arrow">物品名称</dt>
 					<!--有数据时用样式color595959,价格有数据据时用增加样式red-->
-					<dd id="depositum" onblur="alert('sdsa');commonEventPush('寄件','页面统计','我要寄件','ship.html');" onchange="checkNull();">文件</dd>
+					<dd id="depositum" onblur="commonEventPush('寄件','页面统计','我要寄件','ship.html');" onchange="checkNull();">文件</dd>
 				</dl>
 				<dl class="first" id="destinationDiv" hidden="true" onClick="toSelectDestination()">
 					<dt class="arrow">寄送城市</dt>
@@ -103,7 +98,6 @@
 				<dl class="first option_select" id="paymentMethodDiv"  showDivId="div_id_content_fkfs">
 					<dt class="arrow">付款方式</dt>
 					<dd id="paymentMethod">寄件人付</dd>
-					<input type="hidden" id="tableType" class="send">
 					<!-- <input type="hidden" id="paymentMethod" value="1"/> -->
 				</dl>
 				<dl class="option_select" id="insuredAmountDiv"  showDivId="div_id_content_bj" >
@@ -128,8 +122,7 @@
 			</li>
 		</ul> -->
 		<!--end普通运单-->
-		<ul class="order_box mt10 clearfix">
-
+		<ul class="order_box mt10 clearfix ">
 			<li class="special clearfix">
                 <!-- 节日标记 -->
                 <div class="feastMid2"></div>
@@ -150,11 +143,11 @@
 					</a>
 					 -->
 				</dl>
-				<div id="js_content_dxgs" class="message option_mulit_select" showdivid="div_id_content_dxgs">
+				<div id="js_content_dxgs" class="message option_mulit_select" showDivId="div_id_content_dxgs">
 					<div class="box-saytoladdie">
 					<p class="saytoladdie ml55">对小哥说</p>
 					<p class="content-saytoladdie ml55 grey"><span id="span_id_dsgs_text">选填</span></p>
-					<input id="orderRemark" type="hidden" value="">
+					<input id="orderRemark" type="hidden" value="" />
 				    </div>
 				</div>
 			</li>
@@ -162,11 +155,10 @@
 		<ul class="order_box mt10 clearfix mb75">
 			<li class="special clearfix pd-line-half"  onclick="searchProductFeeAndTime()" >
 				<dl class="first"  style="position: relative;   line-height:1.2rem;"  >
-					<dt>产品类型<span id="js_content_cplx" class="ml10 "><i>必选</i></span><input type="hidden" id="productType"></dt>
+					<dt>产品类型<span id="js_content_cplx" class="ml10 ">顺丰标快</span></dt>
 				</dl>
 				<dl id="" class="arrow02" style="line-height: 1.2rem;" >
-					<dt><span  class="ml10" id="span_id_feed">预计送达时间</span></dt>
-					<dt style="display:none;" id="span_id_feed_show">4月10日10:00前<span>送达</span></dt>
+					<dt>预估运费<span id="span_id_feed" class="ml10" >点击预估</span></dt>
 				</dl>
 			</li>
 		</ul>
@@ -180,7 +172,7 @@
         			</tr>
         		</thead>
         		<tbody class="tbody">
-        			 <tr class="tr-top">
+        			<!-- <tr class="tr-top">
         				<td rowspan="1" class="text-center">
         					<i class="ui-ico-sfi ico-parcel-time"></i>
                         </td>
@@ -197,7 +189,7 @@
         				<td colspan="2">
         					<p>全国及港澳台高标准的门到门快件服务</p>
         				</td>
-        			</tr>
+        			</tr> -->
         			<!--  <tr class="tr-top">
         				<td rowspan="2" class="text-center">
         					<i class="ui-ico-sfi ico-parcel-time"></i>
@@ -247,7 +239,6 @@
 		<!-- 底部提交按钮层 -->
 		<dl class="order_submit clearfix">
 			<dt id="agreementDiv">
-			    <P><span class="price-yugu">预估费用：</span><span class="red price-sub-pre" id="yuguFright">0</span><span class="red price-sub-pre" id="destyuguFright" style="display:none">0</span><span class="save-price-n">含保价<i class="save-price" id="savePrice">0元</i></span></P>
 				<div id="makeSure" class="chk-checkbox chk-checked" onclick="makeSureClick();checkNull();"><span></span></div><!-- "chk-checkbox":未选;"chk-checkbox"+"chk-checked":已选 -->同意<a id="js_content_tk" href="javascript:void(0);" onclick="showClause()">《快件契约条款》</a>
 			</dt>
 			<dd>
@@ -256,29 +247,21 @@
 		</dl>
 		<div class="order_layer_shade" style="display:none;"></div><!-- 遮罩弹出层 -->
 		<!-- 遮罩弹出层 -->
-		<div class="order_layer_iframe clearfix" style="height:500px;">
+		<div class="order_layer_iframe clearfix" style="height:0;">
 			<a class="close Left" href="javascript:;">×</a>
-			<!-- <span class="cplx-text-header">选择产品类型</span> -->
-			<div class="order-container-top"></div>
 			<div class="clear"></div>
-			<div class="container clearfix" >
+			<div class="container clearfix">
 				<!-- 保价 -->
 				<div id="div_id_content_bj" class="content_wpzl content_bj1 clearfix" style="display:none;">
-                    <div class="content_bjBox">
-                        <dl class="name_element_select " destId="insuredAmount" >
-                            <dt class="chidren_element_option_other" srcValueId="input_id_declared_value">
-                                <div class="pd">
-                                    <input id="input_id_declared_value" maxlength="4" type="number" oninput="setInsureFee()" setValueCallBack="setInputDeclaredValue($('#input_id_declared_value'))" placeholder="请申明您的快件价值">
-                                    <i>元</i>
-                                </div>
-                            </dt>
-                            <dd><a class="submit Right blue active" href="javascript:void(0)" onclick="setInsureFeeSuerClick()">确定</a></dd>
+                    <div  class="content_bjBox">
+                        <dl class="name_element_select" destId="insuredAmount" >
+                            <dt class="chidren_element_option_other" srcValueId="input_id_declared_value"><div class="pd"><input id="input_id_declared_value" maxlength="4" type="number" oninput="setInsureFee()" setValueCallBack="setInputDeclaredValue($('#input_id_declared_value'))" placeholder="请申明您的快件价值"><i>元</i></div></dt>
+                            <dd><a class="submit Right blue" href="javascript:void(0)" onclick="setInsureFeeSuerClick()">确定</a></dd>
                         </dl>
-                    <h3>预计收取保价费用 : <span id="span_id_insured_calculate_value" class="red">0</span>元</h3>
-
+                        <h3>预计收取保价费用 : <span id="span_id_insured_calculate_value" class="red">0</span>元</h3>
                     </div>
 
-                    <div class="tipWord">
+					<div class="tipWord">
                         <h5><em class="tip_Iconhearts"></em> <span>温馨提示：</span></h5>
                         <div class="tipIntro">
                             1.声明价值*标准服务费率（5％),预估收取费用仅供参考，实际以收派员收取为准。
@@ -287,123 +270,14 @@
                     </div>
 				</div>
 				<!-- 产品类型 -->
-				<div id="div_id_prodect_show" class="content_cplx clearfix w100" style="display:none1;">
-				<!-- 产品类型 后加s-->
-					<div class="box-timecontainer-store">
-						<div class="timecontainer-store">
-							<div class="timecontainer-store-c" id="timecontainerDiv">
-								<ul>
-									 <Li class="T1"  name="seed">
-										<dl>
-											<input type="hidden"/>
-											<input type="hidden" name="itemStr"/>
-											<span style="display:none;" name="hideFreight"></span>
-											<span style="display:none;" name="hideDestFreight"></span>
-											<dt class="cplx-name"  name='cplxName'>顺丰次晨</dt>
-											<dd class="pay-pre">
-												<span name='firstFreight'></span>
-												<span name='destFirstFreight' style="display:none;"></span>
-												<!-- <span name='first_freight_currency' style="display:none"></span> -->
-											</dd>
-
-										</dl>
-										<div class="line-cplx"></div>
-
-										<dl class="second">
-											<dd class="time-pre" name="dd_name_deliverTm">
-												预计<span name='deliverTm'>2015-10-24(周四) 12:00</span>送达
-											</dd>
-											<dd class="time-last" name="dd_name_time_last">
-												截止寄件： <span name='timeLast'>当日10:00</span>
-											</dd>
-										</dl>
-									</Li>
-
-									<!--  <Li class="T8"  name="seed">
-										<dl>
-										<input type="hidden"/>
-										<span style="display:none;" name="hideFreight"></span>
-										<span style="display:none;" name="hideDestFreight"></span>
-											<dt class="cplx-name">顺丰次日</dt>
-											<dd class="pay-pre">
-												<span name='firstFreight'></span>
-												<span name='destFirstFreight' style="display:none;"></span>
-												<span name='first_freight_currency' style="display:none"></span>元  起
-											</dd>
-										</dl>
-										<dl class="second">
-											<dd class="time-pre">
-												预计<span>2015-10-24(周四) 12:00</span>送达
-											</dd>
-											<dd class="time-last">
-												截止寄件： 当日<span>10:00</span>
-											</dd>
-										</dl>
-									</Li>
-									<Li class="T4"  name="seed">
-										<dl>
-										<input type="hidden"/>
-										<span style="display:none;" name="hideFreight"></span>
-										<span style="display:none;" name="hideDestFreight"></span>
-											<dt class="cplx-name">顺丰隔日</dt>
-											<dd class="pay-pre">
-												<span name='firstFreight'></span>
-												<span name='destFirstFreight' style="display:none;"></span>
-												<span name='first_freight_currency' style="display:none"></span>元  起
-											</dd>
-										</dl>
-										<dl class="second">
-											<dd class="time-pre">
-												预计<span>2015-10-24(周四) 12:00</span>送达
-											</dd>
-											<dd class="time-last">
-												截止寄件： 当日<span>10:00</span>
-											</dd>
-										</dl>
-									</Li>
-									<Li class="T6">
-										<dl>
-										<input type="hidden"/>
-										<span style="display:none;" name="hideFreight"></span>
-										<span style="display:none;" name="hideDestFreight"></span>
-											<dt class="cplx-name">顺丰即日</dt>
-											<dd class="pay-pre">
-												<span name='firstFreight'></span>
-												<span name='destFirstFreight' style="display:none;"></span>
-												<span name='first_freight_currency' style="display:none"></span>元  起
-											</dd>
-										</dl>
-										<dl class="second">
-											<dd class="time-pre">已超过最晚寄件时间</dd>
-											<dd class="time-last">
-												截止寄件： 当日上午<span>10:00</span>
-											</dd>
-										</dl>
-									</Li>    -->
-								</ul>
-
-							</div>
-							<div class="tips-cmlx-bottom">
-								<dl>
-									<dt>
-										<img src="../../../css/common/img/tips-people-cplx.png">
-									</dt>
-									<dd>部分线路由于寄件时间过晚或距离过远，需进行加时。（具体线路服务时效可详询95338或查询运费时效）</dd>
-								</dl>
-							</div>
-
-
-						</div>
-					</div>
-					<!--产品类型后加e  -->
-
-					<!-- <ul class="first">
+				<div id="div_id_prodect_show" class="content_cplx clearfix w100" style="display:none; width: 120%; margin-left: -10%;">
+					<ul class="first">
 						<li class="first">产品类型</li>
 						<li class="second">预计送达时间</li>
 						<li class="third">预估运费</li>
 					</ul>
 					<a href="javasctipt:void(0);">
-					<ul class="current">不可选
+					<ul class="current"><!--不可选-->
 						<li class="product_type_T1 first"><p class="cplx">顺丰即日</p></li>
 						<li class="second">
 							<p class="time">已超过最晚寄件时间</p>
@@ -448,21 +322,13 @@
 							<p>运费仅供参考，实际运费以收派员收取为准</p>
 							<p>如派件时间恰逢周六日或节假日,您的快件将晚一天送达。</p>
 						</dt>
-					</dl> -->
+					</dl>
 				</div>
-
-				<div id="id_div_noProduct" class="box-tip-people dev-search-show" style="display:none">
-				      <div class="login-people  flex-c">
-				        <p><img src="../../../css/common/img/people01.png"></p>
-				      </div>
-				      <p class="text-tip-people">暂无查询结果</p>
-				      <p class="tc text-tip-ccc">请试试其它查询条件或稍后再来查询</p>
-				 </div>
 				<!-- 付款方式 -->
 				<div id="div_id_content_fkfs" class="content_fkfs clearfix" style="display:none;">
 					<ul id="ul_id_fkfs" class="clearfix name_element_select" destId="paymentMethod">
-						<li class="chidren_element_option first current" onclick="changePayMethodClass('send')">寄件人付</li><!--选中状态-->
-						<li class="chidren_element_option" onclick="changePayMethodClass('return')">收件人付</li>
+						<li class="chidren_element_option first current">寄件人付</li><!--选中状态-->
+						<li class="chidren_element_option">收件人付</li>
 					</ul>
                     <div class="tipWord">
                         <h5><em class="tip_Iconhearts"></em> <span>温馨提示：</span></h5>
@@ -484,12 +350,12 @@
 						<dt><div class="pd"><input id="input_id_good_name_other_value" type="text"  placeholder="请填您要寄出的物品名称" maxlength="10" size="10" /></div></dt>
 						<dd><a id="id_a_good_name_other" class="submit Right blue" href="javascript:void();">确定</a></dd>
 				    </dl>
+
                     <div class="tipWord">
                         <h5><em class="tip_Iconhearts"></em> <span>温馨提示：</span></h5>
                         <div class="tipIntro">1.如果寄出的物品为带电池类的数码电器，顺丰需采用陆运的方式运输。
                         <br>2.为了保证货物在运输过程中的安全，减少货物破损和丢失情况的发生，在包装过程中，请您尽量保证货件坚固完好、便于装卸、包装密实、进行适当的易碎品防护。</div>
                     </div>
-
 				</div>
 				<!-- 物品重量 -->
 				<div id="div_id_content_wpzl" class="content_wpzl clearfix " style="display:none;">
@@ -504,9 +370,8 @@
 					</ul>
 					<dl id="dl_id_good_weight" style="display:none">
 						<dt><div class="pd"><input id="input_id_good_weight_other_value" type="text"  placeholder="请填写物品重量" setValueCallBack="setWeightValue($('#input_id_good_weight_other_value'))"><i>kg</i></div></dt>
-						<dd><a id="a_id_good_weight_other" class="submit Right blue active" href="javascript:void();" beforeClick="validWeight($('#input_id_good_weight_other_value'))">确定</a></dd>
+						<dd><a id="a_id_good_weight_other" class="submit Right blue" href="javascript:void();" beforeClick="validWeight($('#input_id_good_weight_other_value'))">确定</a></dd>
 				    </dl>
-
                     <div class="tipWord">
                         <h5><em class="tip_Iconhearts"></em> <span>温馨提示：</span></h5>
                         <div class="tipIntro">1.请如实填写快件重量，便于准确估算费用<br>
@@ -516,11 +381,7 @@
 				<!-- 对小哥说 -->
 				<div id="div_id_content_dxgs" class="content_dxgs clearfix" style="display:none;">
                     <dl>
-                        <dt>
-                            <div class="pd">
-                                <input id="input_id_dxgs_put" type="text" class="chidren_element_mulit_option_other"  placeholder="请选择标签或输入内容">
-                            </div>
-                        </dt>
+                        <dt><div class="pd"><input id="input_id_dxgs_put" type="text" class="chidren_element_mulit_option_other"  placeholder="请选择标签或输入内容"></div></dt>
                     </dl>
 					<a id="a_id_dxgs" class="submit02 Right" href="javascript:void(0);" setValueCallBack="setDxgsText()" >确定</a>
 					<ul class="clearfix name_element_mulit_select" makeSuerId="a_id_dxgs" option_other_id="input_id_dxgs_put" destId="orderRemark" delimiter=";">
@@ -535,19 +396,13 @@
                         <div class="tipIntro">1.如需顺丰提供纸箱，需要收取1-6元不等的费用<br>2.大件物品，如体积过大，将会按照体积费收取运费，详情请咨询收派员。</div>
                     </div>
 
+
 				</div>
 
 			</div>
 		</div>
 		<!-- 寄件时间   -->
-		<div id="datePlugin">
-
-
-        </div>
-
-
-
-
+		<div id="datePlugin"></div>
 
 
 
@@ -656,12 +511,12 @@
 <script type="text/javascript" src="../../../js/common_ship.js"></script>
 <!-- 公共页面 -->
 <div id="commonPage"></div> <a href="/page/alipay/index.html" class="cd-Home"><span class="ui-ico-sfi ico-home"></span></a>
-<!-- <script type="text/javascript" src="../../../js/common/util/util.js"></script>
-<script type="text/javascript" src="../../../js/common/common.js"></script>
-<script type="text/javascript" src="../../../js/common/util/common.js"></script>
-<script type="text/javascript" src="../../../js/common/baiduState.js"></script>
-<script type="text/javascript" src="../../../js/alipay/order/juzhen_ship.js?vesion=2.0"></script> -->
-<!-- <script type="text/javascript" src="../../../version/M3.0/js/M_plug/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/js/common/util/util.js"></script>
+<script type="text/javascript" src="/js/common/common.js"></script>
+<script type="text/javascript" src="/js/common/util/common.js"></script>
+<script type="text/javascript" src="/js/common/baiduState.js"></script>
+<script type="text/javascript" src="/js/alipay/order/ship.js?vesion=2.0"></script> -->
+
 <!-- 节日换肤 -->
 <script type="text/javascript" src="../../../version/M3.0/js/feastChange.js"></script>
 </body>
