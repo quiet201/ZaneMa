@@ -112,16 +112,27 @@
 
 <script type="text/javascript" src="static/v1/js/plug/jquery.min.js"></script>
 <script type="text/javascript">
-$(function () {
+$(function() {
     var oServiceIntro = $('.js_serviceIntro');
     var oTitle = oServiceIntro.find('h5');
     var iConArrow = oTitle.find('.icon-arrow');
     var oAside = oServiceIntro.find('aside');
     var _height = [];
+    ChangeFont();
+    $(window).on('resize',function() {
+        ChangeFont();
+        iConArrow.addClass('rotate180');
+        oAside.each(function(i) {
+            _height.push(oAside.eq(i).height());
+
+        }).css({height:0});
+    });
+
     oAside.each(function(i) {
-        _height.push(oAside.eq(i).outerHeight(true));
+        _height.push(oAside.eq(i).height());
         return _height;
     }).css({height:0});
+
     oTitle.on('click',function() {
         var index = oTitle.index(this);
         if(index == oTitle.length-1) {
@@ -140,7 +151,13 @@ $(function () {
 
     });
 
+
+    function ChangeFont() {
+        var scale = $('body').width() / 640;
+        $('html,body').css('font-size', 24 * scale + 'px');
+    }
 });
+
 </script>
 </body>
 </html>

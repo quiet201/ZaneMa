@@ -78,9 +78,16 @@ seajs.use(['hammer','layer','public'], function(myHam,myLay,myPub) {
         });
 
         //规格选择
-        oGoodsSizeUl.find('li').hammer().on('tap',function(e) {
-            var index = $(this).index();
-             oGoodsSizeUl.find('li').removeClass('active').eq(index).addClass('active');
+        oGoodsSizeUl.hammer().on('tap',function(e) {
+            // var index = $(this).index();
+            // oGoodsSizeUl.find('li').removeClass('active').eq(index).addClass('active');
+            var _tar = e.gesture.target;
+            var $tar = $(_tar);
+            var _tarNode = _tar.nodeName.toLowerCase();
+            if(_tarNode == 'li') {
+                oGoodsSizeUl.find('li').removeClass('active');
+                $tar.addClass('active');
+            }
         });
 
 /**********************************  下滑窗口 end     **********************************/

@@ -29,34 +29,42 @@ seajs.use(['hammer','iscroll','layer','lrz','public'], function(myHam,myIsc,myLa
 
         seajs.use(['clip'],function(myClip) {
             oPhotoListLi.each(function(i) {
-                ClipPhoto(oClipArea.eq(i),oFileAddr.eq(i),oClipBtn.eq(i),function(file) {
+                ClipPhoto(oClipArea.eq(i),oFileAddr.eq(i),/*oClipBtn.eq(i),*/function(file) {  //开始
                     myPub.loadLayer();
                     $('.layermcont').append('<p style="padding-top:15px;">图片载入中……</P>');
-                },function(src) {
-                    var beforImg = $('.photo-clip-view').find('img');
-                    $('.layermcont').find('p').remove();
-                    myPub.LayerCloseAll();
-                    oClipBox.show();
-                    oClipArea.hide().eq(i).show();
-                    //取消载入的图片
-                    oCancelBtn.eq(i).hammer().on('tap',function() {
-                        var _cont = "亲！您确定要退出截图吗？";
-                        myPub.askLayer(_cont,function() {
-                            beforImg.eq(i).attr('src','');
-                            oClipBox.hide();
-                            oClipArea.eq(i).hide();
-                            myPub.LayerCloseAll();
-                        },function() { });
-                    });
+                },function(src) {  //加载完成
 
-                },function(event) {
-
-                },function(dataURL) {
-                    var beforImg = $('.photo-clip-view').find('img');
-                    beforImg.attr('src','');
-                    oViewBox.eq(i).show().find('img').attr('src',dataURL);
+                    //不显示裁剪区域
+                    oViewBox.eq(i).show().find('img').attr('src',src);
                     addPhotoBox.eq(i).hide();
-                    oClipBox.hide();
+                    $('.layermcont').find('p').remove();    //移除图片加载文字
+                    myPub.LayerCloseAll();
+
+                    // 显示裁剪区域
+                    //var beforImg = $('.photo-clip-view').find('img');
+                    //$('.layermcont').find('p').remove();
+                    //myPub.LayerCloseAll();
+                    //oClipBox.show();
+                    //oClipArea.hide().eq(i).show();
+                    //取消载入的图片
+                    // oCancelBtn.eq(i).hammer().on('tap',function() {
+                    //     var _cont = "亲！您确定要退出截图吗？";
+                    //     myPub.askLayer(_cont,function() {
+                    //         beforImg.eq(i).attr('src','');
+                    //         oClipBox.hide();
+                    //         oClipArea.eq(i).hide();
+                    //         myPub.LayerCloseAll();
+                    //     },function() { });
+                    // });
+
+                //},function(event) { //加载失败
+
+                //},function(dataURL) { //剪切完成
+                    // var beforImg = $('.photo-clip-view').find('img');
+                    // beforImg.attr('src','');
+                    // oViewBox.eq(i).show().find('img').attr('src',dataURL);
+                    // addPhotoBox.eq(i).hide();
+                    // oClipBox.hide();
                 });
                 // 删除准备上传的照片
                 oDelBtn.eq(i).hammer().on('tap',function() {
@@ -72,18 +80,18 @@ seajs.use(['hammer','iscroll','layer','lrz','public'], function(myHam,myIsc,myLa
 
 
 
-        function ClipPhoto (obj,file,ok,start,complet,erro,finish) {
+        function ClipPhoto (obj,file,/*ok,*/start,complet,erro,finish) {
             obj.photoClip({
-                size: [300, 300],       // 截取框的宽和高 默认值为[260,260]
-                outputSize: [500, 500], // 输出图像的宽和高 默认值为[0,0]，表示输出图像原始大小
+                //size: [300, 300],       // 截取框的宽和高 默认值为[260,260]
+                outputSize: [0, 0],     // 输出图像的宽和高 默认值为[0,0]，表示输出图像原始大小
                 //outputType: "jpg",    // 指定输出图片的类型，可选 "jpg" 和 "png" 两种种类型，默认为 "jpg"
                 file: file,             // 上传图片的<input type="file">控件的选择器
                 //view: view,           // 显示截取后图像的容器的选择器
-                ok: ok,                 // 确认截图按钮的选择器
+                //ok: ok,                 // 确认截图按钮的选择器
                 loadStart: function(file) {start(file);}, // 开始加载的回调函数
                 loadComplete: function(src) {complet(src);}, // 加载完成的回调函数。
-                loadError: function(event) {erro(event);}, // 加载失败的回调函数。
-                clipFinish: function(dataURL) {finish(dataURL);}, // 裁剪完成的回调函数。
+                //loadError: function(event) {erro(event);}, // 加载失败的回调函数。
+                //clipFinish: function(dataURL) {finish(dataURL);}, // 裁剪完成的回调函数。
 
             });
         }

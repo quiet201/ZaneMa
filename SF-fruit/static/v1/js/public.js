@@ -101,16 +101,26 @@ define(function(require,exports,module) {
     /*************** 弹框效果 s***************/
 
     //提示框
-    function TipLayer (sCont,sStyle,fn) {
+    function TipLayer (sCont,sStyle,fn,T) {
         layer.open({
             content: sCont,
             style:sStyle || 'background-color:rgba(0,0,0,0.5); color:#fff; border:none; border-radius: 5px;',
             scrollbar: false,
-            time: 2,
+            time: T || 2,
             success:function() {if(fn)fn();}
         });
     }
     exports.TipLayer = TipLayer;
+
+
+    function TipLayerLong (sCont,sStyle) {
+        layer.open({
+            content: sCont,
+            style:sStyle || 'background-color:rgba(0,0,0,0.5); color:#fff; border:none; border-radius: 5px;',
+            scrollbar: false,
+        });
+    }
+    exports.TipLayerLong = TipLayerLong;
 
     //带按钮提示框
     function TipBtnLayer (sCont,sTit) {

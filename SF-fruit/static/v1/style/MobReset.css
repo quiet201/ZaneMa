@@ -29,7 +29,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
 /* 指示“label”会将焦点移至相关联的表单元素 */
 label { cursor: pointer; }
 
-button, input, select, textarea { margin: 0; vertical-align: baseline; *vertical-align: middle; border-width: 1px;}
+button, input, select, textarea { margin: 0; vertical-align: baseline; *vertical-align: middle; border-width: 1px; font-family:'Microsoft YaHei','SimHei',Helvetica,Arial, sans-serif; font-size: 1.2rem;}
 
 button, input { line-height: normal; *overflow: visible; }
 
@@ -86,8 +86,7 @@ th, td,
 img { border: 0; margin: 0; padding: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; width: 100%  }
 
 /** 设置默认字体 **/
-html {font-size: 62.5%;}
-body,button, input, select, textarea { font: 14px 'Microsoft YaHei','SimHei',Helvetica,Arial, sans-serif;   }
+html, body{ font-family:'Microsoft YaHei','SimHei',Helvetica,Arial, sans-serif; font-size: 14px; }
 h1, h2, h3, h4, h5, h6 { font-size: 100%; }
 em{font-style:normal;}
 
