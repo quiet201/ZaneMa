@@ -14,9 +14,9 @@
 
 <link rel="stylesheet" type="text/css" href="static/v1/style/MobReset.css" >
 <link rel="stylesheet" type="text/css" href="static/v1/style/style.css" >
-<style type="text/css">
-
-</style>
+<link rel="stylesheet" type="text/css" href="static/v1/style/plug/mui.min.css">
+<link rel="stylesheet" type="text/css" href="static/v1/style/plug/mui.viewimage.css">
+<style type="text/css"></style>
 
 </head>
 <body>
@@ -94,9 +94,9 @@
                     <p class="HBox ">
                         <span class="name">售后凭证：</span>
                         <span class="Bflex1">
-                            <img src="static/v1/image/goods1.jpg">
-                            <img src="static/v1/image/goods1.jpg">
-                            <img src="static/v1/image/goods1.jpg">
+                            <img src="static/v1/image/goods1.jpg" data-preview-src="" data-preview-group="1">
+                            <img src="static/v1/image/goods1.jpg" data-preview-src="" data-preview-group="1">
+                            <img src="static/v1/image/goods1.jpg" data-preview-src="" data-preview-group="1">
                         </span>
                     </p>
                     <p class="HBox BoxCenter"><span class="name">退款编号：</span><span class="Bflex1">20161235664</span></p>
@@ -109,10 +109,13 @@
     </div>
 </div>
 
+
 <script type="text/javascript" src="static/v1/js/plug/sea/sea.min.js"></script>
 <script type="text/javascript" src="static/v1/js/plug/jquery.min.js"></script>
+
 <script type="text/javascript">
-    seajs.use(['./static/v1/js/global.js','./static/v1/js/applylay.js'],function() {});
+    seajs.use(['./static/v1/js/global.js','./static/v1/js/applylay.js', './static/v1/js/viewimage.js'],function() {});
+
 </script>
 
 </body>
